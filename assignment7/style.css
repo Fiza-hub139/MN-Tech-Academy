@@ -1,0 +1,158 @@
+/* =============Global Styling ============  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif
+}
+
+section {
+  padding: 20px;
+  text-align: center;
+}
+
+/* =============Navbar Styling ============  */
+
+nav {
+  background-color: #e2ecea;
+  color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* =============Hero Styling ============  */
+#hero {
+  background-image: url(/images/course2.jpg);
+  background-size: cover;
+
+  background-color: #699a91;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+#hero h1 {
+  color: #fff;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+#hero p {
+  color: #eee;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+#hero button {
+  background-color: #fff;
+  color: #699a91;
+  border: none;
+  padding: 7px 20px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#hero button:hover {
+  background-color: #699a91;
+  color: #eee;
+  border: 2px solid #eee;
+}
+
+/* =============Courses Styling ============  */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 10px;
+  width: auto;
+  text-align: center;
+}
+
+/* =============Form Styling ============  */
+.register img {
+  width: 20%;
+  margin-bottom: 20px;
+  margin-left: 20%;
+}
+
+.form {
+  align-items: right;
+  margin-left: 50%;
+  margin-top: -20%;
+  margin-bottom: 20px;
+}
+
+.register {
+  background-color: #699a91;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1.1em;
+}
+
+.register input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.register button {
+  background-color: #fff;
+  color: #699a91;
+  border: none;
+  margin: 10px;
+  padding: 7px 30px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.register button:hover {
+  background-color: #699a91;
+  color: #fff;
+  border: 2px solid #eee;
+}
+
+/* =============Table Styling ============  */
+table {
+  width: 100%;
+  border: 2px solid #333;
+}
+
+th,
+td {
+  border: 1px solid #699a91;
+}
+
+/* =============Footer Styling ============  */
+footer {
+  background-color: #e2ecea;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+}

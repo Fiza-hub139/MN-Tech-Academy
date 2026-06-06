@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Educational Webpage</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- =============NAVBAR============ -->
+    <nav>
+        <h2><a href="#home">EduWeb</a></h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- =============Hero section============ -->
+    <section id="hero">
+        <h1>Learn Web Development</h1>
+        <p>Start your coding journey today!</p>
+        <button>Get Started</button>
+    </section><br>
+    <hr>
+    <!-- =============About Section============ -->
+    <section id="about">
+        <h2 style="color:#699a91 ;">About Us</h2>
+        <p>We are dedicated to providing <b>high-quality web development</b> education to learners of <i>all levels</i>.
+            ,<mark>
+                Our courses are designed to be engaging, practical, and accessible.</p>
+        <p>Whether you're a complete beginner or looking to enhance your skills, we have something for everyone. Our
+            experienced instructors and comprehensive curriculum will guide you every step of the way.</p>
+
+    </section><br>
+    <hr>
+    <marquee direction="left" style="color:#699a91 ;">Join us and start building your future in web
+        development today!</marquee>
+    <hr>
+    <!-- =============Courses Section============ -->
+    <section id="courses">
+        <h2>Our Courses</h2>
+        <p>Explore our comprehensive range of web development courses designed for all skill levels.</p>
+        <div class="cards">
+            <div class="card">
+                <img src="/images/course1.jpg" alt="Course 1" height="200" />
+                <h3>HTML</h3>
+                <p>Learn the basics of HTML and how to structure your web pages effectively.</p>
+            </div>
+            <div class="card">
+                <img src="/images/course2.jpg" alt="Course 2" height="200" />
+                <h3>CSS</h3>
+                <p>Discover how to style your web pages with CSS and create visually appealing designs.</p>
+            </div>
+            <div class="card">
+                <img src="/images/course3.jpg" alt="Course 3" height="200" />
+                <h3>JavaScript</h3>
+                <p>Learn the basics of JavaScript and how to make your web pages interactive.</p>
+            </div>
+        </div>
+    </section>
+    <!-- =============Form============ -->
+    <div class="register">
+        <h2 style="text-align: center;">Register Yourself Now</h2><br>
+        <img src="/images/register.png" alt="">
+        <div class="form">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="     male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label><br>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div><br><br>
+    <hr>
+    <!-- =============Table============ -->
+    <section class="table">
+        <table cellpadding="10px" cellspacing="5">
+            <thead>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Timing</th>
+                <th>Fee</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>HTML</td>
+                    <td>6:00 PM - 8:00 PM</td>
+                    <td>$200</td>
+                </tr>
+                <tr>
+                    <td>Smith</td>
+                    <td>CSS</td>
+                    <td>9:00 AM - 11:00 AM</td>
+                    <td>$250</td>
+                </tr>
+                <tr>
+                    <td>Riya</td>
+                    <td>JavaScript</td>
+                    <td>2:00 PM - 4:00 PM</td>
+                    <td>$300</td>
+                </tr>
+                <tr>
+                    <td>Fred</td>
+                    <td>React</td>
+                    <td>1:00 PM - 3:00 PM</td>
+                    <td>$350</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <div class="images">
+            <a href="/course1.jpg" target="_blank"> <img src="/images/course1.jpg" alt="course1" height="200px"></a>
+            <a href="/course3.jpg" target="_blank"> <img src="/images/course3.jpg" alt="course3" height="200px"></a>
+        </div>
+    </section><br>
+
+
+    <footer>
+        <p>&copy; 2026 Web Development Course. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
