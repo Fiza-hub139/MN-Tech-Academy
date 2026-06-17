@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Css Layout Concepts</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header id="header">
+    <h1><a href="#">CSS Layouts</a></h1>
+    <nav>
+      <ul>
+        <li><a href="#header">Home</a></li>
+        <li><a href="#layouts">CSSLayouts</a></li>
+        <li><a href="#quote">Quote</a></li>
+        <li><a href="#colBox1">Column Box 1</a></li>
+        <li><a href="#colBox2">Column Box 2</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="layouts">
+    <h3>ABOUT LAYOUTS</h3>
+    <div class="box box1">
+      <p>Static Position</p>
+      <!-- <p>This is default. Element is positioned according to the normal document flow -->
+      </p>
+    </div>
+    <div class="box box2">
+      <p>Relative Position</p>
+      <!-- <p>Element is positioned relative to its normal position in the document flow -->
+      </p>
+    </div>
+    <div class="box box3">
+      <p>Absolute Position</p>
+      <!-- <p>Element is positioned relative to the nearest positioned ancestor -->
+      </p>
+    </div>
+
+  </div>
+
+  <div id="quote" class="imagebox">
+    <img src="/assignment9/img.jpg" alt="quoteimage">
+    <div class="text">
+      <h2>Inspiration Quote</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita voluptatibus at, magnam asperiores tempora
+        nisi. Neque architecto adipisci vitae iure. Dolorum quia sint maiores porro totam quam quibusdam? Mollitia, non.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+  </div>
+  <!-- TASK 4 -->
+  <section id="colBox1">
+    <div id="col1">
+      <p>One column having 70% width of this section </p>
+    </div>
+    <div id="col2">
+      <p>Remaining 30% width</p>
+    </div>
+  </section>
+  <!-- TASK 5 -->
+  <section id="colBox2">
+    <div id="c1">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit officiis nihil beatae architecto, repudiandae
+        est id aliquam exercitationem earum provident dolor fugit molestiae quasi asperiores. Veniam unde ut repellat
+        eveniet.</p>
+    </div>
+    <div id="c2">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit officiis nihil beatae architecto, repudiandae
+        est id aliquam exercitationem earum provident dolor fugit molestiae quasi asperiores. Veniam unde ut repellat
+        eveniet.</p>
+    </div>
+    <div id="c3">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit officiis nihil beatae architecto, repudiandae
+        est id aliquam exercitationem earum provident dolor fugit molestiae quasi asperiores. Veniam unde ut repellat
+        eveniet.</p>
+    </div>
+  </section>
+  <!-- TASK 6 -->
+  <section id="task6">
+    <div class="box1task6">
+      <h3>BOX A</h3>
+      <p>This Box has value of z-index: 1</p>
+    </div>
+    <div class="box2task6">
+      <h3>BOX B</h3>
+      <p>Z-index has 10</p>
+    </div>
+  </section>
+  <!-- TASK 7 -->
+  <section id="task7">
+    <div class="box1task7">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, impedit adipisci aperiam deleniti labore
+        fuga repellat quae eum maxime, voluptates ab ut atque eaque, excepturi tempore consequatur doloribus quaerat.
+        Vel.</p>
+    </div><br>
+    <div class="box2task7">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, impedit adipisci aperiam deleniti labore
+        fuga repellat quae eum maxime, voluptates ab ut atque eaque, excepturi tempore consequatur doloribus quaerat.
+        Vel.</p>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2024 My Website. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
