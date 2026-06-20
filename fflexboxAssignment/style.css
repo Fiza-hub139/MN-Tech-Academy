@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: slategray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* ===========================
+Header styling
+============================== */
+.navbar {
+    width: 100%;
+    background-color: rgba(63, 201, 201, 0.192);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+}
+
+.navbar #logo {
+    font-size: 30px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.navbar nav a {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 400;
+}
+#hero{
+    display: flex;
+    align-items: center;
+}
+aside {
+    background-color: rgba(0, 255, 255, 0.411);
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 80px;
+}
+
+aside #dash {
+    /* background-color: black; */
+    border-bottom: 1px solid whitesmoke;
+    color: antiquewhite;
+    padding: 20px;
+}
+aside #aside-sec div{
+    padding: 10px;
+    /* font-weight: ; */
+    margin-left: 10px;
+}
+#content{
+    width: 80%;
+    margin-left: 20%;
+}
+#content #main-box{
+    background-color: linear-gradient(to bottom, blue , rgb(25, 25, 67));
+    margin-top: 100px;
+}
+#main-box h2{
+    background-color: rgba(0, 0, 255, 0.148);
+    margin: 0pc 20%;
+    border-radius: 20px;
+    padding: 40px 10px;
+    text-align: center;
+}
+
+#cards{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10%;
+}
+.card{
+    text-align: center;
+    background-color: rgba(0, 255, 255, 0.342);
+    padding: 20px;
+    border-radius: 20px;
+    border-left: 5px solid rgb(47, 81, 81);
+}
