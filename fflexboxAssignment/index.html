@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
@@ -13,8 +14,8 @@
         <div id="logo"><a href="#">Flexiweb</a></div>
         <nav>
             <a href="#">Home</a>
-            <a href="#">Layout</a>
-            <a href="#">Cards</a>
+            <a href="#">Flex Layout</a>
+            <a href="#">Grid Layout</a>
             <a href="#">Footer</a>
         </nav>
     </header>
@@ -48,8 +49,47 @@
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, sunt!</p>
                 </div>
             </section>
+            <section id="grid-cards">
+                <h2>CSS Grid Columns</h2>
+                <div id="grid-col">
+                    <div class="card">
+                        <h3>Card</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, sunt!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Card</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, sunt!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Card</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, sunt!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Card</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, sunt!</p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="def">
+                   <table border="2px" cellpadding="100">
+                        <thead>
+                            <th>Css Flexbox</th>
+                            <th>Css Grid</th>
+                        </thead>
+                        <tbody>
+                            <td><b>Flexbox</b> is best suited for 1-dimensional layouts (either a single row OR a single column) where item content dictates sizing, like alignment in navbars or standard wrapping card rows.</td>
+                            <td><b>CSS Grid</b> is built for 2-dimensional layouts (both rows AND columns simultaneously), making it the perfect tool for complex, asymmetric page-wide structures or strict magazine-style grids.</td>
+                        </tbody>
+
+                    </table>
+                </div>
+            </section>
         </main>
     </section>
+    <footer>
+        <p>&copy; copyright by Coder &hearts;</p>
+    </footer>
 </body>
 
 </html>

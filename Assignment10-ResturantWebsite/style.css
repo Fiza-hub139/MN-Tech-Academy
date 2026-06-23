@@ -16,7 +16,7 @@ body {
 header {
     width: 100%;
     background-color: rgb(145, 56, 56);
-    padding: 15px 9%;
+    padding: 17px 9%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,7 +43,7 @@ li a {
 
 li a:hover {
     color: black;
-    text-decoration: underline;
+    text-transform: uppercase;
 }
 
 li a:active {
@@ -51,13 +51,13 @@ li a:active {
 }
 
 button {
-    width: 90px;
+    width: 100px;
     background-color: antiquewhite;
     color: #000;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 300;
     margin-left: 30px;
-    padding: 10px 15px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -67,7 +67,7 @@ button:hover {
     color: antiquewhite;
     background-color: black;
     border: 2px solid antiquewhite;
-
+    /* font-size: 12px; */
 }
 
 /* --- Hero section --- */
@@ -83,14 +83,10 @@ button:hover {
     align-items: center;
 }
 #home .hero{
-background-color: #ffffff1e;
-height: 70%;
+background-color: transparent;
 width: 40%;
-margin-left: 5% ;
+padding: 20px;
+margin-left: 10% ;
 border-radius: 10%;
-box-shadow: 0px 0px 10px #b59797;
-}
-.hero h2{
-    margin: 10%;
-    font-weight: 700;
+/* box-shadow: 0px 0px 10px #b59797; */
 }

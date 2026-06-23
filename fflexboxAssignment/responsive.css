@@ -1,0 +1,41 @@
+/* =======Responsive web styling======= */
+@media (max-width: 800px) {
+#hero {
+  display: flex;
+  width: 100%;
+}
+#content{
+    margin-left: 0;
+}
+aside {
+  width: 25%; 
+  display: none;
+
+}
+main {
+  flex: 1; 
+}
+#grid-cards{
+    width: 100%;
+}
+}
+@media (max-width:580px) {
+    nav{
+        display: none;
+    }
+    
+}
+@media (max-width:480px) {
+    #cards{
+        flex-wrap: wrap;
+    }
+    
+}
+@media (max-width:340px) {
+    #cards{
+        flex-wrap: wrap;
+    }
+    #grid-col.cards{
+        width: 40%;
+    }
+}
