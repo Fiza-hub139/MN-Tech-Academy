@@ -28,7 +28,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
@@ -56,12 +56,17 @@
     #home .hero {
         width: 70%;
     }
+
+    #about p {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 700px) and (max-width: 768px) {
-.logo{
-    margin-top: 30px;
-}
+    .logo {
+        margin-top: 30px;
+    }
+
     .card div {
         margin-top: 40px;
     }
@@ -83,6 +88,7 @@
     #top {
         display: none;
     }
+
     #home .hero {
         width: 60%;
     }
