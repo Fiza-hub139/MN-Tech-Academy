@@ -10,16 +10,33 @@
 body {
     height: 100vh;
     width: 100%;
-    color: antiquewhite;
+    /* color: antiquewhite; */
+}
+
+#top {
+    height: 20px;
+    background-color: antiquewhite;
+    color: brown;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#top i {
+    border-radius: 50%;
+    color: brown;
+    padding: 10px;
 }
 
 header {
     width: 100%;
-    background-color: rgb(145, 56, 56);
+    background-color: brown;
     padding: 17px 9%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     position: sticky;
 }
 
@@ -27,11 +44,14 @@ header {
     font-size: 30px;
     font-weight: 500;
     text-transform: uppercase;
-    color: antiquewhite;
+}
+.logo a, .navbar a{
+    color: antiquewhite;    
 }
 
 li {
     display: inline-block;
+    margin-top: 10px;
 }
 
 li a {
@@ -42,28 +62,25 @@ li a {
 }
 
 li a:hover {
-    color: black;
-    text-transform: uppercase;
+    font-size: 1.6rem;
+    text-shadow: 0px 0px 10px whitesmoke;
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
 }
 
-li a:active {
-    color: black;
-}
-
-button {
-    width: 100px;
+.hero button {
     background-color: antiquewhite;
     color: #000;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 300;
-    margin-left: 30px;
-    padding: 10px;
+    margin-top: 30px;
+    padding: 15px 30px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
 }
 
-button:hover {
+.hero button:hover {
     color: antiquewhite;
     background-color: black;
     border: 2px solid antiquewhite;
@@ -71,10 +88,10 @@ button:hover {
 }
 
 /* --- Hero section --- */
-#home{
+#home {
     width: 100%;
     height: 90vh;
-    background: linear-gradient(rgba(203, 17, 17, 0.3),rgba(24, 1, 1, 0.7)),url(/Assignment10-ResturantWebsite/images/background.jpg);
+    background: linear-gradient(rgba(203, 17, 17, 0.3), rgba(24, 1, 1, 0.7)), url(/Assignment10-ResturantWebsite/images/background.jpg);
     background-size: cover;
     background-position: center;
     /* background-attachment: fixed; */
@@ -82,11 +99,229 @@ button:hover {
     /* justify-content: center; */
     align-items: center;
 }
-#home .hero{
-background-color: transparent;
-width: 40%;
-padding: 20px;
-margin-left: 10% ;
-border-radius: 10%;
-/* box-shadow: 0px 0px 10px #b59797; */
+
+#home .hero {
+    background-color: transparent;
+    width: 40%;
+    padding: 20px;
+    margin-left: 10%;
+    border-radius: 10%;
+    /* box-shadow: 0px 0px 10px #b59797; */
+}
+.hero h2 {
+    text-align: center;
+}
+.hero p {
+    line-height: 1.5;
+    text-align: left;
+}
+
+div marquee {
+    margin-top: 10px;
+    padding: 20px;
+    color: brown;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+#grid-cards {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgba(250, 235, 215, 0.523);
+    border: 1px solid gainsboro;
+    box-shadow: 2px 0px 10px gray;
+}
+
+#grid-col {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5%;
+}
+
+#selection {
+    margin-top: 20px;
+    margin-bottom: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#selection a {
+    padding: 10px 20px;
+    background-color: none;
+    color: brown;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+#selection a:hover {
+    background-color: brown;
+    color: antiquewhite;
+    border: 1px solid antiquewhite;
+}
+
+.card {
+    /* width: 30%; */
+    height: 50vh;
+    text-align: center;
+    background-color: linear-gragient(to bottom, rgba(128, 128, 128, 0.250), rgba(0, 0, 0, 0.250));
+    box-shadow: 10px 10px 20px gray;
+
+}
+
+.card div h3 {
+    margin-top: -15%;
+    color: brown;
+    padding: 10px 10px;
+    background-color: rgba(250, 235, 215, 0.70);
+    position: relative;
+    z-index: 10;
+}
+
+.card img {
+    /* margin-top: 10px; */
+    width: 100%;
+    height: 100%;
+}
+
+/* footer */
+footer {
+    background-color: rgba(165, 42, 42, 0.84);
+    width: 100%;
+    /* height: 50vh; */
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 24px;
+}
+
+#f-links {
+    /* background-color: #666666; */
+    width: 40%;
+    height: 100%;
+    display: block;
+    /* line-height: 1.5; */
+    margin-left: 10%;
+}
+
+#f-links div {
+    font-size: 20px;
+    text-decoration: none;
+    color: antiquewhite;
+    text-align: justify;
+    margin: 10px auto;
+    /* padding-top: 10px; */
+    margin-left: 10%;
+}
+
+#f-links div a {
+    color: antiquewhite;
+}
+
+#f-links div a:hover {
+    font-size: 22px;
+    transition: 0.3s ease-in-out;
+}
+
+#icons {
+    padding-top: 20px;
+    /* margin-left: -30%; */
+}
+
+#icons .fa-brands {
+    font-size: 25px;
+    color: antiquewhite;
+    border-radius: 50%;
+    border: 2px solid antiquewhite;
+    filter: invert(21%) sepia(80%) saturate(74%) hue-rotate(359deg) brightness(100%) contrast(100%);
+    cursor: pointer;
+    box-shadow: 0px 0px 10px whitesmoke;
+}
+
+#signin {
+    width: 70%;
+    max-width: 500px;
+    background-color: transparent;
+    padding: 10px;
+    margin: 20px;
+}
+
+#signin h2 {
+    margin-bottom: 24px;
+    color: antiquewhite;
+    font-size: 28px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: antiquewhite;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.actions a {
+    color: rgb(58, 7, 7);
+    text-decoration: none;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: antiquewhite;
+    color: brown;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: brown;
+}
+
+#copyright {
+    border: 1px solid brown;
+    box-shadow: 0px 0px 5px ghostwhite;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(165, 42, 42, 0.84);
+    color: antiquewhite;
 }

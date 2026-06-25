@@ -1,0 +1,115 @@
+@media (max-width:800px) {
+
+    header nav a,
+    #top {
+        font-size: 10px;
+    }
+}
+
+@media (max-width:815px) {
+    header {
+        display: block;
+    }
+
+    header .logo,
+    header .navbar {
+        width: 100%;
+    }
+}
+
+@media (max-width:710px) {
+
+    header ul a {
+        display: none;
+    }
+
+    #icons a li {
+        font-size: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        /* Aligns logo and links to the left */
+        gap: 15px;
+    }
+
+    ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        padding-left: 0;
+    }
+
+    ul li {
+        width: 100%;
+    }
+
+    ul a {
+        display: block;
+        padding: 8px 0;
+        border-bottom: 1px solid antiquewhite;
+    }
+
+    #home .hero {
+        width: 70%;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 768px) {
+.logo{
+    margin-top: 30px;
+}
+    .card div {
+        margin-top: 40px;
+    }
+
+    footer #f-links #icons {
+        display: grid;
+        grid-template-columns: subgrid;
+    }
+}
+
+/* @media (min-width: 484) and (max-width: 700px) {
+
+    .card div {
+        margin-top: 90%;
+    }
+} */
+
+@media (max-width: 535px) {
+    #top {
+        display: none;
+    }
+    #home .hero {
+        width: 60%;
+    }
+
+    #home .hero p {
+        font-size: 13px;
+    }
+
+    .card div {
+        margin-top: 10px;
+    }
+
+}
+
+@media (max-width: 395px) {
+    #grid-cards #selection a {
+        margin-bottom: 10px;
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .card div {
+        margin-top: -50px;
+    }
+
+}
