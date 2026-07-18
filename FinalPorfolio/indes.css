@@ -1,0 +1,1267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    background-color: var(--primary-bg-color);
+    color: var(--text-white);
+}
+
+:root {
+    --primary-bg-color: #1a1b1c;
+    --button-color: rgb(246, 197, 223);
+    --heading-color: rgb(245, 219, 238);
+    --heading-size: 2em;
+    --normal-text: 1em;
+    --link-font-size: 1.5em;
+
+    /* Additional UI variables keeping your theme in mind */
+    --text-white: #ffffff;
+    --text-muted: #aaaaaa;
+}
+
+/* ======================================================= */
+/* 02. Core Navbar Architecture */
+/* ======================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    z-index: 1000;
+    /* Pinned on top of everything */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* ─── LOGO STYLES ─── */
+.logo a {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-white);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.logo a span {
+    color: var(--button-color);
+    /* Neon/Lime dot */
+}
+
+/* ─── NAVIGATION LINKS TRACK ─── */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: var(--normal-text);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-white);
+}
+
+/* Micro Interaction Underline */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--button-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ─── ACTION TRIGGER BUTTON ─── */
+.nav-action {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.connect-btn {
+    background-color: transparent;
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
+    padding: 0.6rem 1.4rem;
+    font-size: calc(var(--normal-text) * 0.95);
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.connect-btn:hover {
+    background-color: var(--button-color);
+    color: var(--primary-bg-color);
+    box-shadow: 0 0 15px rgba(175, 207, 60, 0.2);
+}
+
+/* ─── BURGER MOBILE TOGGLE ICON ─── */
+.menu-toggle {
+    display: none;
+    /* Desktop par hidden */
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    width: 24px;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-white);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ======================================================= */
+/* 02b. Responsive Layout Breakpoints (< 768px) */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .menu-toggle {
+        display: flex;
+        /* Mobile screen active state trigger */
+    }
+
+    /* Dropdown vertical drawer menu overlay setup */
+    .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: rgba(26, 27, 28, 0.98);
+        /* Heavy tracking dark mask */
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        transform: translateY(-100%);
+        /* Keeps it locked upwards off-screen */
+        opacity: 0;
+        pointer-events: none;
+        /* Stops phantom clicks when closed */
+        transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    /* When navbar dropdown activates */
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+    }
+
+    /* ─── MOBILE BURGER INTERACTIVE CROSS SHAPE (When .active triggers) ─── */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--button-color);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+        /* Middle track disappears */
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--button-color);
+    }
+}
+
+/* ======================================================= */
+/* 8. Modern CSS Grid Hero Layout */
+/* ======================================================= */
+.hero-grid-container {
+    margin-top: 28vh;
+    background-color: var(--primary-bg-color);
+    padding: 2rem 8%;
+
+    /* ─── GRID LAYOUT RULES ─── */
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    /* Two distinct fluid dashboard columns */
+    align-items: center;
+    gap: 4rem;
+}
+
+/* 1ST DIV: Text + Social Alignment Container */
+.hero-text-block {
+    display: flex;
+    align-items: stretch;
+    gap: 2.5rem;
+}
+
+/* Vertical Social Line Component */
+.social-links-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    padding: 0 10px;
+}
+
+.social-links-vertical::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.social-links-vertical a {
+    color: var(--text-muted);
+    font-size: var(--link-font-size);
+    text-decoration: none;
+    background-color: var(--primary-bg-color);
+    padding: 5px 0;
+    z-index: 2;
+    display: inline-flex;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.social-links-vertical a:hover {
+    color: var(--button-color);
+    transform: scale(1.3);
+}
+
+/* Typography Inside 1st Div */
+.hero-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-text-content .greeting {
+    color: var(--heading-color);
+    font-size: var(--normal-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-text-content h1 {
+    font-size: calc(var(--heading-size) * 1.8);
+    color: var(--text-white);
+    margin: 0.5rem 0 1.5rem 0;
+    line-height: 1.2;
+}
+
+.hero-text-content h1 span {
+    color: var(--heading-color);
+}
+
+.hero-text-content p {
+    font-size: var(--normal-text);
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 540px;
+}
+
+/* 2ND DIV: Animated Circular Image Container */
+.hero-image-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animated-img-container {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    /* Image completely perfectly round */
+    padding: 5px;
+    background: linear-gradient(135deg, var(--button-color), transparent);
+    box-shadow: 0 0 25px rgba(175, 207, 60, 0.2);
+
+    /* Infinite Continuous Spin System */
+    animation: smoothSpin 10s linear infinite;
+}
+
+.animated-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary-bg-color);
+
+    /* Stabilizes your portrait while outer frame spins */
+    animation: counterSpin 10s linear infinite;
+}
+
+/* Animation Mechanics */
+@keyframes smoothSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counterSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* ======================================================= */
+/* 9. Responsive Grid Shifting System (< 768px) */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    .hero-grid-container {
+        /* Columns collapse into a stacked row configuration */
+        grid-template-columns: 1fr;
+        padding: 4rem 5%;
+        gap: 3rem;
+    }
+
+    /* Shifting image block to the 1st position explicitly in Grid rendering */
+    .hero-image-block {
+        grid-row: 1;
+    }
+
+    .hero-text-block {
+        grid-row: 2;
+        flex-direction: column-reverse;
+        /* Icons shift below text content smoothly */
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .social-links-vertical {
+        flex-direction: row;
+        padding: 10px 0;
+    }
+
+    .social-links-vertical::before {
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+
+    .social-links-vertical a {
+        padding: 0 10px;
+    }
+
+    .hero-text-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .animated-img-container {
+        max-width: 260px;
+    }
+}
+
+/* ======================================================= */
+/* 12. Education Section Layout (CSS Grid Timeline) */
+/* ======================================================= */
+.education-section {
+    padding: 6rem 8%;
+    background-color: var(--primary-bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* ─── 2-DIV SPLIT ENGINE ─── */
+.education-split-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    /* Clean unbalanced focus layout split */
+    gap: 4rem;
+    align-items: start;
+}
+
+/* 1ST DIV: Left Side Title Styles */
+.education-info-block {
+    position: sticky;
+    top: 120px;
+    /* Keeps the text pinned while scrolling through right timeline */
+}
+
+.section-title-left span {
+    color: var(--heading-color);
+    font-size: var(--normal-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-title-left h2 {
+    font-size: calc(var(--heading-size) * 1.5);
+    color: var(--text-white);
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.section-title-left h2 span {
+    color: var(--heading-color);
+}
+
+.section-title-left p {
+    color: var(--text-muted);
+    font-size: var(--normal-text);
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+/* 2ND DIV: Right Side Timeline Mechanical Architecture */
+.education-timeline-block {
+    position: relative;
+    padding-left: 2rem;
+    /* Vertical indicator track running behind cards */
+    border-left: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Single Timeline Event Card */
+.timeline-card {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.timeline-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Timeline Custom Nodes (The Dots) */
+.timeline-marker {
+    position: absolute;
+    left: calc(-2rem - 7px);
+    /* Centers the node dot perfectly over the track line */
+    top: 2.3rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-bg-color);
+    border: 3px solid var(--button-color);
+    /* Bright lime green indicator dot */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Card Content Typography */
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--button-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-card h3 {
+    color: var(--text-white);
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+}
+
+.timeline-card h4 {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.timeline-card p {
+    color: var(--text-muted);
+    font-size: var(--normal-text);
+    line-height: 1.6;
+}
+
+/* ─── HOVER & TILT EFFECTS ─── */
+.timeline-card:hover {
+    border-color: rgba(175, 207, 60, 0.2);
+    transform: translateX(8px);
+    /* Card gently pushes rightwards on hover */
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.timeline-card:hover .timeline-marker {
+    background-color: var(--button-color);
+    /* Fills up the tracking node */
+    transform: scale(1.2);
+}
+
+/* ======================================================= */
+/* 13. Education Section Media Query Layout Adjustment (< 768px) */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    .education-split-grid {
+        grid-template-columns: 1fr;
+        /* Collapse left and right columns vertically */
+        gap: 2.5rem;
+    }
+
+    .education-info-block {
+        position: static;
+        /* Dissolves desktop fixed pinning rules */
+    }
+
+    .section-title-left p {
+        max-width: 100%;
+    }
+
+    .education-timeline-block {
+        padding-left: 1.5rem;
+    }
+
+    .timeline-marker {
+        left: calc(-1.5rem - 7px);
+    }
+}
+
+/* ======================================================= */
+/* 10. Refined 2-Div Split Skills Grid */
+/* ======================================================= */
+.skills-section {
+    margin: 10%;
+    padding: 5%;
+    background-color: var(--primary-bg-color);
+    box-shadow: 0 2px 10px var(--button-color);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: var(--heading-size);
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.section-title h2 span {
+    color: var(--heading-color);
+}
+
+.section-title p {
+    font-size: var(--normal-text);
+    color: var(--text-muted);
+}
+
+/* ─── 2-DIV SPLIT SYSTEM ─── */
+.skills-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Split into exactly 2 equal columns */
+    gap: 4rem;
+}
+
+/* Individual Column Container */
+.skills-column {
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.skills-column:hover {
+    border-color: rgba(175, 207, 60, 0.15);
+}
+
+.skills-column h3 {
+    color: var(--text-white);
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Small visual accent block under column titles */
+.skills-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 30px;
+    height: 3px;
+    background-color: var(--heading-color);
+    border-radius: 2px;
+}
+
+/* ─── RANGE PROGRESS BAR ENGINE ─── */
+.skill-bar-wrapper {
+    margin-bottom: 1.8rem;
+}
+
+.skill-bar-wrapper:last-child {
+    margin-bottom: 0;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.skill-info span {
+    color: var(--text-white);
+    font-size: var(--normal-text);
+    font-weight: 500;
+}
+
+/* Percentage color mappings using button token */
+.skill-info .skill-percentage {
+    color: var(--button-color);
+    font-weight: 600;
+}
+
+/* Empty Range Track Line */
+.progress-line {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Active Filled Range Layer */
+.progress-line span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--button-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(175, 207, 60, 0.4);
+
+    /* Smooth horizontal growth fill-in animation on load */
+    animation: loadProgress 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+    transform-origin: left;
+}
+
+/* ─── FILLING ANIMATION ENGINE ─── */
+@keyframes loadProgress {
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/* ======================================================= */
+/* 11. Responsive Grid Optimization (< 768px) */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    .skills-split-grid {
+        grid-template-columns: 1fr;
+        /* Columns collapse into 1 stack vertically on mobile */
+        gap: 2rem;
+    }
+
+    .skills-column {
+        padding: 1.8rem;
+    }
+}
+
+
+/* ======================================================= */
+/* 14. Projects Section Layout (Text-Driven CSS Grid) */
+/* ======================================================= */
+.projects-section {
+    padding: 6rem 8% 4rem 8%;
+    background-color: var(--primary-bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ─── NEW TEXTED HEADER CONTAINER ─── */
+.project-text-brand {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Big stylized backdrop text block */
+.brand-bg-text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.03);
+    /* Subtle watermark text */
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    user-select: none;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
+}
+
+/* Hover active state overlay fade-in */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 27, 28, 0.85);
+    /* Semi-transparent layout background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.view-project-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--button-color);
+    color: var(--primary-bg-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Card details panel */
+.project-info {
+    padding: 1.8rem;
+}
+
+.project-tag {
+    color: var(--button-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.project-info h3 {
+    color: var(--text-white);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    transition: color 0.2s ease;
+}
+
+.project-info p {
+    color: var(--text-muted);
+    font-size: calc(var(--normal-text) * 0.95);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.project-tech-stack span {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ─── HOVER INTERACTIONS ─── */
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(223, 39, 140, 0.297);
+    box-shadow: 0 12px 25px rgba(175, 207, 60, 0.06);
+}
+
+.project-card:hover .project-info h3 {
+    color: var(--heading-color);
+}
+
+/* Watermark text animation: Scales up and glows slightly */
+.project-card:hover .brand-bg-text {
+    transform: scale(1.15);
+    color: rgba(175, 207, 60, 0.08);
+    /* Glow tracking with button color */
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-card:hover .view-project-icon {
+    transform: translateY(0);
+}
+
+/* Responsive adjustment setup */
+@media screen and (max-width: 768px) {
+    .projects-section {
+        padding: 4rem 5%;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ======================================================= */
+/* 16. Contact Section Layout (CSS Grid Engine) */
+/* ======================================================= */
+.contact-section {
+    padding: 6rem 8% 8rem 8%;
+    background-color: var(--primary-bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.contact-split-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    /* Asymmetric balance for text entry layout focus */
+    gap: 5rem;
+    align-items: center;
+}
+
+/* ─── 1ST DIV: PROFILE & SOCIALS LAYOUT ─── */
+.contact-profile-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+/* Round Profile Image With Breathe Shadow Effect */
+.contact-avatar-wrapper {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--button-color), transparent);
+    box-shadow: 0 0 20px rgba(175, 207, 60, 0.15);
+    overflow: hidden;
+}
+
+.contact-avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary-bg-color);
+}
+
+/* Horizontal Social Grid Row beneath picture */
+.contact-social-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.contact-social-row a {
+    color: var(--text-muted);
+    font-size: var(--link-font-size);
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.contact-social-row a:hover {
+    color: var(--button-color);
+    /* Changes to lime green on hover */
+    transform: scale(1.3);
+    /* Scales up smoothly */
+}
+
+/* ─── 2ND DIV: MODERN CONTACT FORM FIELDS ─── */
+.contact-form-block {
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 3rem;
+    border-radius: 20px;
+}
+
+.custom-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* Name & Email horizontal container on desktop */
+.form-group-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.input-field-wrapper label {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Custom Styled Input Targets */
+.input-field-wrapper input,
+.input-field-wrapper textarea {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    color: var(--text-white);
+    font-size: var(--normal-text);
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field-wrapper textarea {
+    resize: none;
+    /* Disables dragging handle grid glitch */
+}
+
+/* Interactive Input Focus Glow Engine */
+.input-field-wrapper input:focus,
+.input-field-wrapper textarea:focus {
+    border-color: var(--button-color);
+    box-shadow: 0 0 10px rgba(175, 207, 60, 0.1);
+}
+
+/* Full Width Action Form Trigger Button Override */
+.form-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+/* ======================================================= */
+/* 17. Contact Section Responsive Overrides (< 768px) */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    .contact-section {
+        padding: 4rem 5%;
+    }
+
+    .contact-split-grid {
+        grid-template-columns: 1fr;
+        /* Vertical stacking collapse */
+        gap: 3.5rem;
+    }
+
+    .form-group-row {
+        grid-template-columns: 1fr;
+        /* Name and Email separate fields row break */
+        gap: 1.8rem;
+    }
+
+    .contact-form-block {
+        padding: 2rem 1.5rem;
+    }
+}
+/* ======================================================= */
+/* 20. Centered Right Floating Scroll Controllers & Animations */
+/* ======================================================= */
+.scroll-navigator {
+  position: fixed;
+  top: 50%; /* Screen ke bilkul vertical center axis par lock */
+  right: 30px; /* Absolute right alignment mapping */
+  transform: translateY(-50%); /* Axis translation balance for perfect middle line placement */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999; /* Isse yeh hamesha saare sections ke upar visible rahega */
+}
+
+.scroll-navigator button {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(26, 27, 28, 0.9); /* Aapka main dark layout background match */
+  border: 2px solid rgba(255, 255, 255, 0.08); /* Default visible border link boundary */
+  color: var(--text-white);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4); /* Right side side-shadow adjustment */
+}
+
+.scroll-navigator button i {
+  transition: transform 0.3s ease;
+}
+
+/* ─── HOVER & DIRECTIONAL ANIMATION ENGINES ─── */
+.scroll-navigator button:hover {
+  background-color: transparent;
+  border-color: var(--button-color); /* Neon lime glow color template active */
+  box-shadow: 0 0 15px rgba(175, 207, 60, 0.3);
+  color: var(--button-color);
+}
+
+/* UP ARROW ANIMATION: Vertical bounce up on hover */
+#scroll-up-btn:hover i {
+  animation: bounceUp 1s infinite alternate ease-in-out;
+}
+
+/* DOWN ARROW ANIMATION: Vertical bounce down on hover */
+#scroll-down-btn:hover i {
+  animation: bounceDown 1s infinite alternate ease-in-out;
+}
+
+@keyframes bounceUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+@keyframes bounceDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+
+/* ─── MOBILE SCREENS ALIGNMENT OVERRIDES (< 768px) ─── */
+@media screen and (max-width: 768px) {
+  .scroll-navigator {
+    top: auto;
+    bottom: 20px; /* Mobile touch accessibility ke liye bottom shift best practice hy */
+    right: 20px;
+    transform: none; /* Reset vertical translation axis */
+    flex-direction: row; /* Horizontal elements layout chain setup for thumbs */
+    gap: 8px;
+  }
+  
+  .scroll-navigator button {
+    width: 40px;
+    height: 40px;
+    font-size: 0.95rem;
+    border-width: 1.5px;
+  }
+}
+/* ======================================================= */
+/* 18. Professional Footer Architecture */
+/* ======================================================= */
+.main-footer {
+    background-color: rgba(20, 21, 22, 0.95);
+    /* Slightly darker than primary-bg for solid definition */
+    padding: 5rem 8% 3rem 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1.2fr;
+    /* Perfect unbalanced text flow distribution */
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h3 {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* ─── COLUMN 1: BRAND LOGO TRACK ─── */
+.footer-tagline {
+    color: var(--text-muted);
+    font-size: calc(var(--normal-text) * 0.95);
+    line-height: 1.6;
+    margin: 1.2rem 0 2rem 0;
+    max-width: 360px;
+}
+
+.copyright-text {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.85rem;
+    display: block;
+}
+
+/* ─── COLUMN 2: QUICK NAVIGATION LINKS ─── */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--normal-text);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--button-color);
+    transform: translateX(4px);
+    /* Subtle shift right on text interaction */
+}
+
+/* ─── COLUMN 3: CHANNELS & PHONE MATRIX ─── */
+.footer-contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.8rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-muted);
+    font-size: var(--normal-text);
+}
+
+.footer-contact-info i {
+    color: var(--button-color);
+    /* Accented icons style */
+    font-size: 0.95rem;
+    width: 15px;
+}
+
+.footer-contact-info a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-contact-info a:hover {
+    color: var(--text-white);
+}
+
+/* Social Micro Icons Under Channels */
+.footer-socials {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.footer-socials a {
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--primary-bg-color);
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+    transform: translateY(-3px);
+}
+
+/* ======================================================= */
+/* 19. Responsive Footer Layout Adjustments (< 768px) */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    .main-footer {
+        padding: 4rem 5% 2rem 5%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        /* Collapses all 3 columns into a clean single vertical pipeline */
+        gap: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-tagline {
+        max-width: 100%;
+        margin: 1rem 0 1.5rem 0;
+    }
+
+    .copyright-text {
+        margin-top: 1rem;
+    }
+}
